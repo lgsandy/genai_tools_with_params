@@ -109,8 +109,8 @@ async function init(msz) {
   }
 }
 
-// init( { role: "user", content: "What's the weather in Delhi and also tell me the stock price of AAPL?" });
-init( { role: "user", content: "Who is the prime minister of india" });
+init( { role: "user", content: "What's the weather in Delhi and also tell me the stock price of AAPL?" });
+
 
 
 // console.log(response.choices[0].message);
