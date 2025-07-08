@@ -4,8 +4,8 @@ import { config } from "dotenv";
 config();
 
 const openai = new OpenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-  baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+  apiKey: "ollama",
+  baseURL: "http://localhost:11434/v1",
 });
 
 const myTools = [
@@ -50,15 +50,14 @@ async function getStockPrice(symbol) {
 
 async function init(msz) {
   const messages = [
-    {
+   {
       role: "system",
-      content:"You are a smart assistant. You can answer normal user questions and use tools when appropriate.",
+      content: "You are a smart assistant. You can answer normal user questions and use tools when appropriate."
     },
     msz,
   ];
-
   const firstResponse = await openai.chat.completions.create({
-    model: "gemini-2.0-flash",
+    model: "qwen3:1.7b",
     messages: messages,
     tools: myTools.map((fn) => ({ type: "function", function: fn })),
     tool_choice: "auto",
@@ -95,7 +94,7 @@ async function init(msz) {
     }
 
     const finalResponse = await openai.chat.completions.create({
-      model: "gemini-2.0-flash",
+      model: "qwen3:1.7b",
       messages: [
         ...messages,
         firstResponse.choices[0].message,
@@ -109,8 +108,15 @@ async function init(msz) {
   }
 }
 
-init( { role: "user", content: "What's the weather in Delhi and also tell me the stock price of AAPL?" });
-
-
+// init({
+//   role: "user",
+//   content:
+//     "What's the weather in Delhi and also tell me the stock price of AAPL?",
+// });
+init({
+  role: "user",
+  content:
+    "Write a c program to print hello",
+});
 
 // console.log(response.choices[0].message);
