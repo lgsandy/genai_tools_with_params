@@ -1,0 +1,16 @@
+{
+  "name": "genai-tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "author": "Santosh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.1.0",
+    "openai": "^5.8.2"
+  }
+}
