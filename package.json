@@ -10,7 +10,9 @@
   "author": "Santosh",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.10.0",
     "dotenv": "^17.1.0",
-    "openai": "^5.8.2"
+    "openai": "^5.8.2",
+    "prompt-sync": "^4.2.0"
   }
 }
